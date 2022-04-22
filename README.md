@@ -3,8 +3,10 @@
 # Libraries
 #Ramda
 
+# What i do ?
 Gestion fonctionnel de classes d'objet ?
 
+# Classes
 Camion, ,Ville, Entrepot, Distributeur spawn sur un plan (x, y)
 
 Camion {'Id', 'CapaciteCargo', 'Cargo', 'Distance_parcourue', 'Paye')
