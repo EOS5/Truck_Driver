@@ -20,5 +20,6 @@ const random = R.curry((min, max, isFloat) => {
     return isFloat ? Math.random() * (max - min) + min : Math.floor(Math.random() * (max - min) + min);
 })
 
+
 export {CalculDistance,CalculPaye,random}
 

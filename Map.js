@@ -13,11 +13,13 @@ const distributeur = new Distributeur("Paris",random(1,10,false),random(1,10,fal
 
 console.log(List)
 console.log(List[0].getNomEntrepot());
-console.log(distributeur.getstock());
-Camion1.adddistance(CalculDistance(distributeur.getcorrd(),List[0].getcorrd()));
-Camion1.addcargo(300);
-Camion1.addpaye(CalculPaye(Camion1.getCargo(),List[0].getPrixUnit()));
+console.log(distributeur.getStock());
+Camion1.addDistance(CalculDistance(distributeur.getCorrd(),List[0].getCorrdEntrepot()));
+Camion1.addCargo(300);
+Camion1.addPaye(CalculPaye(Camion1.getCargo(),List[0].getPrixUnit()));
 console.log(Camion1.getDiscanceParcourue());
 console.log(Camion1.getPaye());
-console.log(List[0].getcorrd());
-console.log(distributeur.getcorrd());
+console.log(List[1].getCorrdEntrepot());
+console.log(distributeur.getCorrd());
+
+

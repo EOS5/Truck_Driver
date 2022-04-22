@@ -1,23 +1,16 @@
-class Ville {
-    constructor(NomVille,positionX,positionY) {
-        this.NomVille = NomVille;
+
+class Entrepot {
+    constructor(nom_entrepot,positionX,positionY) {
+        this.nom_entrepot = nom_entrepot;
         this.positionX = positionX;
         this.positionY = positionY;
     }
-    getNomVille(){
-        return this.NomVille;
-    }
-    getcorrd(){
-        return [this.positionX, this.positionY];
-    }
-}
-class Entrepot extends Ville {
-    constructor(NomVille,positionX,positionY,nom_entrepot) {
-        super(NomVille,positionX,positionY);
-        this.nom_entrepot = nom_entrepot;
-    }
+
     getNomEntrepot(){
         return this.nom_entrepot;
+    }
+    getCorrdEntrepot(){
+        return [this.positionX, this.positionY];
     }
 }
 class Marchandise extends Entrepot {
@@ -26,10 +19,10 @@ class Marchandise extends Entrepot {
         this.Quantite = Quantite;
         this.Prix_Unit = Prix_Unit;
     }
-    addstock(quantiteAjoute){
+    addStockMerch(quantiteAjoute){
         this.Quantite = ++ quantiteAjoute;
     }
-    reducestock(stock){
+    reduceStock(stock){
         this.Quantite = -- stock;
     }
     getStock(){
@@ -39,18 +32,27 @@ class Marchandise extends Entrepot {
         return this.Prix_Unit;
     }
 }
-class Distributeur extends Ville{
-    constructor(NomVille,positionX,positionY,NomDistributeur,Stock) {
-        super(NomVille,positionX,positionY);
+class Distributeur {
+    constructor(NomDistributeur,positionX,positionY,Stock) {
         this.NomDistributeur = NomDistributeur;
+        this.positionX = positionX;
+        this.positionY = positionY;
         this.Stock = Stock;
     }
     getNomDistributeur(){
         return this.NomDistributeur
     }
-    getstock(){
+
+    getCorrd(){
+        return [this.positionX, this.positionY];
+    }
+
+    addStock(Quantite){
+        return this.Stock = this.Stock + Quantite ;
+    }
+    getStock(){
         return this.Stock;
     }
 }
 
-export {Ville,Entrepot,Marchandise,Distributeur}
+export {Entrepot,Marchandise,Distributeur}

@@ -1,18 +1,20 @@
 export class Camion {
-    constructor(Id, CapaciteCargo,Cargo, Distance_parcourue, Paye) {
+    constructor(Id, CapaciteCargo,Cargo, Distance_parcourue, Paye, PositionX, PositionY) {
         this.Id = Id;
         this.CapaciteCargo = CapaciteCargo;
         this.Cargo = Cargo;
         this.Distance_parcourue = Distance_parcourue;
         this.Paye = Paye;
+        this.PositionX = PositionX;
+        this.PositionY = PositionY;
     }
-    addcargo(quantite){
+    addCargo(quantite){
         this.Cargo = this.Cargo + quantite;
     }
-    adddistance(distance){
+    addDistance(distance){
         this.Distance_parcourue = this.Distance_parcourue + distance;
     }
-    addpaye(prix){
+    addPaye(prix){
         this.Paye = this.Paye + prix;
     }
     getIdCamion(){
@@ -29,5 +31,11 @@ export class Camion {
     }
     getPaye(){
         return this.Paye;
+    }
+    setCoordCamion(Position){
+        [this.PositionX, this.PositionY] = Position;
+    }
+    getCoordCamion(){
+        return [this.PositionX, this.PositionY];
     }
 }
