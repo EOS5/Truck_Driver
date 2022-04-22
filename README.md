@@ -1,12 +1,12 @@
 # Truck_Driver
 
-# Libraries
+## Libraries
 Ramda
 
-# What i do ?
+## What i do ?
 Gestion fonctionnel de classes d'objet ?
 
-# Classes
+## Classes
 Camion, ,Ville, Entrepot, Distributeur spawn sur un plan (x, y)
 
 Camion {'Id', 'CapaciteCargo', 'Cargo', 'Distance_parcourue', 'Paye')
