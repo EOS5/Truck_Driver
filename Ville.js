@@ -40,10 +40,10 @@ class Marchandise extends Entrepot {
     }
 }
 class Distributeur extends Ville{
-    constructor(NomVille,positionX,positionY,NomDistributeur,stock) {
+    constructor(NomVille,positionX,positionY,NomDistributeur,Stock) {
         super(NomVille,positionX,positionY);
         this.NomDistributeur = NomDistributeur;
-        this.Stock = stock;
+        this.Stock = Stock;
     }
     getNomDistributeur(){
         return this.NomDistributeur
