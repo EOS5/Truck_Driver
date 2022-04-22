@@ -19,3 +19,6 @@ Marchandise {'NomVille', 'positionX', 'positionY', 'nom_entrepot', 'Quantite', '
 
 Distributeur {'NomVille', 'positionX', 'positionY', 'NomDistributeur', 'stock'}
 
+## Sources of inspiration
+  https://www.youtube.com/watch?v=BAejnwN4Ccw
+  
