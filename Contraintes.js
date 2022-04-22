@@ -1,18 +1,10 @@
 import * as R from 'ramda'
 
 const CalculDistance = (x, y) => {
-    if (R.subtract(x[0],y[0]) === 0){
-        return Math.abs(R.subtract(x[1],y[1]));
-    }
-    else if (R.subtract(x[1],y[1]) === 0) {
-        return Math.abs(R.subtract(x[0],y[0]));
-    }
-    else {
-        return R.divide(Math.abs(R.subtract(x[0],y[0])),Math.abs(R.subtract(x[1],y[1])));
-    }
+    return Math.sqrt(Math.pow(R.subtract(x[0],y[0]),2) + Math.pow(R.subtract(x[1],y[1]),2));
 }
 
-const CalculPaye = (quantite,prixUnite) => {
+const CalculPaye = (quantite, prixUnite) => {
     return R.multiply(quantite,prixUnite);
 }
 
