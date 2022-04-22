@@ -1,5 +1,8 @@
 # Truck_Driver
 
+# Libraries
+#Ramda
+
 Gestion fonctionnel de classes d'objet ?
 
 Camion, ,Ville, Entrepot, Distributeur spawn sur un plan (x, y)
