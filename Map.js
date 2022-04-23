@@ -1,33 +1,50 @@
-import {GetVector, CalculPaye, random, CalcDistance} from "./Contraintes.js";
+import {GetVector, Random,} from "./Contraintes.js";
 
 import {Distributeur, Marchandise} from "./Ville.js";
 import {Camion} from "./Camion.js";
 
+const listPoints = [];
+const listOfTrucks  = [];
+const listDistributeur = [];
 
-const List = [];
-for (var i = 0;i<2;i++){
-    List[i] = new Marchandise("Paris", random(1, 10, false), random(1, 10, false), "Chanel", random(1, 500, false), random(1, 5, false));
+for (let i = 0; i<5; i++){
+    listPoints[i] = new Marchandise("Paris", Random(1, 10, false), Random(1, 10, false), "Chanel", Random(1, 500, false), Random(1, 5, false));
 }
-const ListOfTrucks  = [];
-for (var j = 0;j<2;j++){
-    ListOfTrucks[j] = new Camion(j,random(100,500,false),0,0,0,random(1,10,false),random(1,10,false));
+for (let j = 0; j<2; j++){
+    listOfTrucks[j] = new Camion(j,Random(100,500,false),0,0,0,Random(1,10,false),Random(1,10,false));
 }
-const Camion1 = new Camion(1,350,0,0,0,random(1,10,false),random(1,10,false));
-const distributeur = new Distributeur("Paris",random(1,10,false),random(1,10,false),"Leclerc",random(1,500,false));
+for (let j = 0; j<2; j++) {
+    listDistributeur[j] = new Distributeur("Paris", Random(1, 10, false), Random(1, 10, false), "Leclerc", Random(1, 500, false));
+}
 
+const listArrayPosition = [];
+const getArrayPosition = () => {
+    for (let i = 0; i<listPoints.length; i++){
+        listArrayPosition[i] = listPoints[i].getCorrdEntrepot();
+    }
+}
 
-console.log(List)
-console.log(ListOfTrucks);
-console.log(List[0].getNomEntrepot());
-console.log(distributeur.getStock());
-Camion1.addDistance(GetVector(distributeur.getCorrd(),List[0].getCorrdEntrepot()));
-Camion1.addCargo(300);
-Camion1.addPaye(CalculPaye(Camion1.getCargo(),List[0].getPrixUnit()));
-console.log(Camion1.getDiscanceParcourue());
-console.log(Camion1.getPaye());
-console.log(List[1].getCorrdEntrepot());
-console.log(distributeur.getCorrd());
-console.log(Camion1.getCoordCamion());
-console.log(CalcDistance(Camion1.getCoordCamion()))
+const calcDistance = (positionCamion) => {
+    var sum = 0;
+    for (let i = 0; i < listArrayPosition.length; i++){
+        var d = GetVector(positionCamion,listArrayPosition[i]);
+        sum = sum + d;
+    }
+    return sum;
+}
+const getClosestPoint = (PositionCamion) => {
+    var smallestValue = calcDistance(listOfTrucks[0].getCoordCamion())
+    for (let i = 0; i < listArrayPosition.length; i++){
+        var d = GetVector(PositionCamion,listArrayPosition[i]);
+        if (smallestValue > d){
+            smallestValue = listArrayPosition[i];
+        }
+    }
+    return smallestValue;
+}
 
-export {List}
+console.log(listOfTrucks[0].getCoordCamion())
+getArrayPosition();
+calcDistance(listOfTrucks[0].getCoordCamion());
+listOfTrucks[0].setCoordCamion(getClosestPoint(listOfTrucks[0].getCoordCamion()));
+console.log(listOfTrucks[0].getCoordCamion())
