@@ -35,6 +35,12 @@ export class Camion {
     setCoordCamion(Position){
         [this.PositionX, this.PositionY] = Position;
     }
+    getCoordCamionX(){
+        return this.PositionX;
+    }
+    getCoordCamionY(){
+        return this.PositionY;
+    }
     getCoordCamion(){
         return [this.PositionX, this.PositionY];
     }
