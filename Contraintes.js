@@ -1,11 +1,21 @@
 import * as R from 'ramda'
 
-const GetVector = (x, y) => {
-    return Math.sqrt(Math.pow(R.subtract(x[0],y[0]),2) + Math.pow(R.subtract(x[1],y[1]),2));
+const GetVector = (x1, y1, x2, y2) => {
+    return Math.sqrt(Math.pow(R.subtract( x1, x2),2) + Math.pow(R.subtract( y1, y2),2));
 }
 
 const CalculPaye = (quantite, prixUnite) => {
     return R.multiply(quantite,prixUnite);
+}
+
+const random = R.curry((min, max, isFloat) => {
+    let range = max - min
+    let random = Math.random() * range + min
+    return isFloat ? random : Math.floor(random)
+})
+
+const randomfunc = () => {
+    return R.identity(random(1,10,false));
 }
 
 const shufflelist = (list,index1,index2) => {
@@ -16,5 +26,5 @@ const shufflelist = (list,index1,index2) => {
 
 
 
-export {GetVector,CalculPaye,shufflelist}
+export {GetVector,CalculPaye,shufflelist,randomfunc}
 

@@ -1,28 +1,14 @@
 import * as R from 'ramda'
+import {randomfunc} from "./Contraintes.js";
 
-const randomNumberGenerator = R.curry((min, max, isFloat) => {
-    return isFloat ? (max - min) : Math.floor(Math.random() * (max - min) + min);
-})
-const generateNumber = () =>{
-    return R.identity(randomNumberGenerator(1,10,false));
-}
-const generatePoints = (quantite) => {
-    return R.times(generateNumber, quantite);
-}
+const QuantitiesPoints = 10;
+const QuantitiesOfTrucks = 2;
+const Points = R.aperture(2,R.times(randomfunc, QuantitiesPoints));
+const Trucks = R.aperture(2,R.times(randomfunc, QuantitiesOfTrucks));
 
-const numberToTuple = (listOfPoints) => {
-    return R.aperture(2,listOfPoints)
-}
-const generateCoordonates = (quantite) => {
-    return numberToTuple(generatePoints(quantite));
-}
-//-----------------------------------------------------
-//const GetVector = (x, y) => {
-//    return Math.sqrt(Math.pow(R.subtract(x[0],y[0]),2) + Math.pow(R.subtract(x[1],y[1]),2));
-//}
-//const VectorfromCoordonates = (listOfCoordonates) => {
+console.log(Points)
+console.log(Trucks)
 
-//}
-//-----------------------------------------------------
-const Coordonnee = generateCoordonates(10);
-console.log(Coordonnee);
+
+
+//const f = R.map(console.log,Points)
