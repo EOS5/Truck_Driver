@@ -3,9 +3,6 @@ import * as R from 'ramda'
 const randomNumberGenerator = R.curry((min, max, isFloat) => {
     return isFloat ? (max - min) : Math.floor(Math.random() * (max - min) + min);
 })
-const possiblePath = (quantite) => {
-    return R.scan(R.multiply, 1, quantite);
-}
 const generateNumber = () =>{
     return R.identity(randomNumberGenerator(1,10,false));
 }
@@ -29,4 +26,3 @@ const generateCoordonates = (quantite) => {
 //-----------------------------------------------------
 const Coordonnee = generateCoordonates(10);
 console.log(Coordonnee);
-console.log(possiblePath(10))
