@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import {getCordX, randomFunc} from "./Contraintes.js";
+import {randomFunc,NormVector} from "./Contraintes.js";
 
 
 const generateTruck = R.applySpec({
@@ -27,9 +27,5 @@ const createPoint = R.times(generatePoint);
 
 const fleet = createFleet(2);
 const wareHouses = createPoint(10);
-console.log(fleet)
-console.log(wareHouses[1]['pos']['x']);
-getCordX(wareHouses[1]);
 
-
-
+console.log(NormVector(fleet[1],wareHouses[1]));

@@ -8,28 +8,30 @@ const random = R.curry((min, max, isFloat) => {
 })
 
 const randomFunc = () => {
-    R.identity(random(1,10,false));
+    return R.identity(random(1,10,false));
 }
 
-const getCordX = (obj) => {
-    R.pluck(obj['pos']['x']);
+const getCordAxisX = R.pipe(
+    R.pluck('pos'),
+    R.pluck('x')
+)
+const getCordAxisY = R.pipe(
+    R.pluck('pos'),
+    R.pluck('y')
+)
+const pow = x => x ** 2
+const subtractOnX = (obj1,obj2) => {
+    return R.subtract(getCordAxisX([obj1]), getCordAxisX([obj2]))
 }
-const getCordY = (obj) => {
-    R.pluck(obj['pos']['y']);
+const subtractOnY = (obj1,obj2) => {
+    return R.subtract(getCordAxisY([obj1]), getCordAxisY([obj2]))
+}
+const sqrt = x => Math.sqrt(x)
+const NormVector = (obj1, obj2) => {
+    return sqrt(R.add(pow(subtractOnX(obj1,obj2)),pow(subtractOnY(obj1,obj2))))
 }
 
-// const pow = (x) => x ** 2;
-//
-// const sqrt = (x) => Math.sqrt(x)
-//
-// const substractX = (obj1, obj2) => (axis) => {
-//     R.subtract(getCordX(obj1),getCordX(obj2))
-// }
-//
-// const substractY = (obj1, obj2) => {
-//     R.subtract(getCordY(obj1),getCordY(obj2))
-// }
 
 
-export {randomFunc,getCordY,getCordX}
+export {randomFunc,NormVector}
 
