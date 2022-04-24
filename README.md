@@ -4,20 +4,18 @@
 Ramda
 
 ## What i do ?
-Gestion fonctionnel de classes d'objet ?
+Traveling sales man with constraints ? at least i will try…
 
 ## Classes
 Camion, ,Ville, Entrepot, Distributeur spawn sur un plan (x, y)
 
-Camion {'Id', 'CapaciteCargo', 'Cargo', 'Distance_parcourue', 'Paye')
+Camion {'Id', 'CapaciteCargo', 'Cargo', 'Distance_parcourue', 'Paye', ' PositionX', 'PositionY')
 
-Ville {'NomVille', 'positionX', 'positionY')
+Entrepot {'positionX', 'positionY', 'nom_entrepot'}
 
-Entrepot {'NomVille', 'positionX', 'positionY', 'nom_entrepot'}
+Marchandise {'positionX', 'positionY', 'nom_entrepot', 'Quantite', 'Prix_Unit'}
 
-Marchandise {'NomVille', 'positionX', 'positionY', 'nom_entrepot', 'Quantite', 'Prix_Unit'}
-
-Distributeur {'NomVille', 'positionX', 'positionY', 'NomDistributeur', 'stock'}
+Distributeur {'positionX', 'positionY', 'NomDistributeur', 'stock'}
 
 ## Sources of inspiration
   https://www.youtube.com/watch?v=BAejnwN4Ccw
