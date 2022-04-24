@@ -1,12 +1,5 @@
 import * as R from 'ramda'
 
-const GetVector = (x1, y1, x2, y2) => {
-    return Math.sqrt(Math.pow(R.subtract( x1, x2),2) + Math.pow(R.subtract( y1, y2),2));
-}
-
-const CalculPaye = (quantite, prixUnite) => {
-    return R.multiply(quantite,prixUnite);
-}
 
 const random = R.curry((min, max, isFloat) => {
     let range = max - min
@@ -14,17 +7,29 @@ const random = R.curry((min, max, isFloat) => {
     return isFloat ? random : Math.floor(random)
 })
 
-const randomfunc = () => {
-    return R.identity(random(1,10,false));
+const randomFunc = () => {
+    R.identity(random(1,10,false));
 }
 
-const shufflelist = (list,index1,index2) => {
-    let temp = list[index1];
-    list[index1] = list[index2];
-    list[index2] = temp;
+const getCordX = (obj) => {
+    R.pluck(obj['pos']['x']);
+}
+const getCordY = (obj) => {
+    R.pluck(obj['pos']['y']);
 }
 
+// const pow = (x) => x ** 2;
+//
+// const sqrt = (x) => Math.sqrt(x)
+//
+// const substractX = (obj1, obj2) => (axis) => {
+//     R.subtract(getCordX(obj1),getCordX(obj2))
+// }
+//
+// const substractY = (obj1, obj2) => {
+//     R.subtract(getCordY(obj1),getCordY(obj2))
+// }
 
 
-export {GetVector,CalculPaye,shufflelist,randomfunc}
+export {randomFunc,getCordY,getCordX}
 
