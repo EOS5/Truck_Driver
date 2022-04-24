@@ -27,11 +27,11 @@ const subtractOnY = (obj1,obj2) => {
     return R.subtract(getCordAxisY([obj1]), getCordAxisY([obj2]))
 }
 const sqrt = x => Math.sqrt(x)
-const NormVector = (obj1, obj2) => {
+const normVector = R.curry((obj1,obj2) => {
     return sqrt(R.add(pow(subtractOnX(obj1,obj2)),pow(subtractOnY(obj1,obj2))))
-}
+})
 
 
 
-export {randomFunc,NormVector}
+export {randomFunc,normVector}
 
