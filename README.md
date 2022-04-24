@@ -8,7 +8,7 @@ Traveling sales man with constraints ? at least i will try…
 
 -Create Fleet of Trucks
 
--Create fiel of points
+-Create field of points
 
 -Calculate Vector
 
