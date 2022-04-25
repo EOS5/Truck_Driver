@@ -1,5 +1,6 @@
 import * as R from 'ramda'
 import {wareHouses,fleet} from "./Population.js";
+import {normVector} from "./BasicCalculs.js";
 
 
 // console.log(R.map(normVector(fleet[1]),(wareHouses)))
