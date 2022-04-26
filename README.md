@@ -12,6 +12,12 @@ Traveling sales man with constraints ? at least i will try…
 
 -Calculate Vector
 
+-Find best path
+
+-Calculate fitness and normalize
+
+
+
 ## Sources of inspiration
   https://www.youtube.com/watch?v=BAejnwN4Ccw
   
