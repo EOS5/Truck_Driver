@@ -32,12 +32,9 @@ const wareHouses = createWarehouse(numberOfPoints);
 const creatOrderOfPoints = R.times(R.identity,numberOfPoints);
 const population  = R.repeat(creatOrderOfPoints,numberOfPoints);
 
-//console.log(population);
-
 const shuffle = shuffler(Math.random);
 
 const populationShuffled = R.map(shuffle,population);
 
-console.log(populationShuffled)
 
-export {wareHouses,fleet}
+export {wareHouses,fleet,populationShuffled}
