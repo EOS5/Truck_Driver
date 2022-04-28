@@ -13,7 +13,6 @@ const generatePoint = R.applySpec({
     }
 });
 
-const createWarehouse = R.times(generatePoint);
 const generateTruck = R.applySpec({
     name: "Truck1",
     trunk: R.always(Infinity),
@@ -24,6 +23,7 @@ const generateTruck = R.applySpec({
     }
 });
 
+const createWarehouse = R.times(generatePoint);
 const createFleet = R.times(generateTruck);
 
 const fleet = createFleet(numberOfTruck);
