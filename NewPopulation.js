@@ -1,6 +1,7 @@
 import * as R from 'ramda';
-import {calcDistanceWithOrder} from "./BasicCalculs.js";
+import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 import {populationShuffled, wareHouses} from "./Population.js";
+import {swap} from "./Shuffle.js";
 
 const distanceByPath = R.map(calcDistanceWithOrder(wareHouses),populationShuffled);
 const square = n => n * n;
@@ -22,12 +23,17 @@ const bestPath = populationShuffled[indexOfBestPath];
 // console.log(normalizedFitness);
 console.log(bestPath);
 
-
-// const randomval = Math.random();
-// const randomIsSup = x => x > 0;
-//
-// const subtractWhile = R.reduceWhile(randomIsSup,R.subtract,randomval,normalizedFitness)
-// console.log(randomval)
-// console.log(subtractWhile)
-
+const pickOne = R.curry((list,prob) => {
+    var index = 0;
+    var r = Math.random();
+    while (r > 0){
+        r = r - prob[index];
+        index ++;
+    }
+    index --;
+    return list[index];
+})
+const pop = pickOne(populationShuffled,normalizedFitness);
+const mutatePopulation = swap(randomFunc(),randomFunc(),pop);
+console.log(mutatePopulation);
 export {normalizedFitness}
