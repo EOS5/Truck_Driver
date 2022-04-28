@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import {randomFunc} from "./BasicCalculs.js";
-import {shuffler} from "./Shuffle.js";
+import {shuffle} from "./Shuffle.js";
 
 const numberOfPoints = 10;
 const numberOfTruck = 1;
@@ -31,8 +31,6 @@ const wareHouses = createWarehouse(numberOfPoints);
 
 const creatOrderOfPoints = R.times(R.identity,numberOfPoints);
 const population  = R.repeat(creatOrderOfPoints,numberOfPoints);
-
-const shuffle = shuffler(Math.random);
 
 const populationShuffled = R.map(shuffle,population);
 

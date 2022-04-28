@@ -13,6 +13,7 @@ const shuffler = R.curry(function(random, list) {
         }
         return result;
     })
+const shuffle = shuffler(Math.random);
 
 const swap = R.curry((index1, index2, list) => {
     if (index1 < 0 || index2 < 0 || index1 > list.length - 1 || index2 > list.length - 1) {
@@ -25,4 +26,4 @@ const swap = R.curry((index1, index2, list) => {
         R.set(R.lensIndex(index2), value1)
     )(list)
 })
-export {shuffler,swap}
+export {shuffle,swap}
