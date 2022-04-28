@@ -30,8 +30,9 @@ const sqrt = x => Math.sqrt(x)
 const normVector = R.curry((obj1,obj2) => {
     return sqrt(R.add(pow(subtractOnX(obj1,obj2)),pow(subtractOnY(obj1,obj2))))
 })
-//ToDo: Modify this function to be Ramda
-const calcDistance = R.curry((points,order) => {
+
+//ToDo: Modify this function to be Ramda ?
+const calcDistanceWithOrder = R.curry((points, order) => {
     var sum = 0;
     for (var i = 0;i<order.length - 1; i++){
         var pointAIndex = order[i];
@@ -44,5 +45,5 @@ const calcDistance = R.curry((points,order) => {
     return sum
 })
 
-export {randomFunc,normVector,calcDistance}
+export {randomFunc,normVector,calcDistanceWithOrder,random}
 
