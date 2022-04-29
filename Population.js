@@ -1,5 +1,5 @@
 import * as R from 'ramda'
-import {randomFunc} from "./BasicCalculs.js";
+import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 import {shuffle} from "./Shuffle.js";
 
 const numberOfPoints = 10;
@@ -8,7 +8,7 @@ const popSize = 100;
 
 
 const generatePoint = R.applySpec({
-    name: 'Point1',
+    name: "Point 1",
     pos: {
         x: randomFunc,
         y: randomFunc
@@ -31,10 +31,23 @@ const createFleet = R.times(generateTruck);
 const fleet = createFleet(numberOfTruck);
 const wareHouses = createWarehouse(numberOfPoints);
 
-const creatOrderOfPoints = R.times(R.identity,numberOfPoints);
-const population  = R.repeat(creatOrderOfPoints,popSize);
+const generateListOfOrder = R.times(R.identity,numberOfPoints);
+const orderOfPoints = () => {
+    return shuffle(generateListOfOrder);
+}
 
-const populationShuffled = R.map(shuffle,population);
+const calculateDistance = () => {
+    return calcDistanceWithOrder(wareHouses,orderOfPoints())
+}
 
+const generatePopulation = R.applySpec({
+    order: orderOfPoints,
+    distance: calculateDistance
+})
 
-export {wareHouses,fleet,populationShuffled}
+const createPopulation = R.times(generatePopulation);
+const population = createPopulation(popSize);
+const byDistance = R.ascend(R.prop('distance'));
+const populationSorted = R.sort(byDistance,population)
+
+export {wareHouses,fleet,populationSorted}

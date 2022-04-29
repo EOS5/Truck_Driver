@@ -1,6 +1,8 @@
 import * as R from 'ramda';
-import {normalizedFitness} from "./NewPopulation.js";
+import {fleet, wareHouses} from "./Population.js";
+import {newPopulation} from "./NewPopulation.js";
 
-console.log(R.add(1,1))
-
-console.log(normalizedFitness)
+console.log(R.add(1,1));
+console.log(fleet);
+console.log(wareHouses);
+console.log(newPopulation)
