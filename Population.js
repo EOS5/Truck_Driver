@@ -43,7 +43,6 @@ const generatePopulation = R.applySpec({
     order: orderOfPoints,
     distance: calculateDistance
 })
-
 const createPopulation = R.times(generatePopulation);
 const population = createPopulation(popSize);
 const byDistance = R.ascend(R.prop('distance'));

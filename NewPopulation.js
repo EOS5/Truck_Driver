@@ -1,17 +1,53 @@
 import * as R from 'ramda';
-import {populationSorted} from "./Population.js";
+import {populationSorted, wareHouses} from "./Population.js";
 import {swap} from "./Shuffle.js";
-import {randomFunc} from "./BasicCalculs.js";
+import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 
-// const takeDistance = R.pluck('distance');
-// const popOrder = R.pluck('order');
 
 const newPopulation = R.take(30,populationSorted);
 
-const mutate = (list) => {
-    return R.map(swap(randomFunc(),randomFunc()),list)
-}
-console.log(newPopulation)
-const mutatedPopulation = R.map(mutate,newPopulation)
+// const popOrder = R.prop('order');
 
-console.log(mutatedPopulation)
+const mutateOrder = R.pipe(
+    R.prop('order'),
+    swap(randomFunc(),randomFunc())
+)
+const nextGeneration = R.applySpec({
+    order: mutateOrder,
+})
+
+const createNextGeneration = R.map(nextGeneration,newPopulation)
+
+const mutateDistance = R.pipe(
+    R.prop('order'),
+    calcDistanceWithOrder(wareHouses)
+)
+const newDistance = R.applySpec({
+    distance: mutateDistance,
+})
+
+const createJsp = R.map(newDistance,createNextGeneration)
+
+console.log(createJsp)
+
+
+
+
+
+
+
+
+
+
+
+// R.modify('order',swap(randomFunc(),randomFunc()));
+
+// const Lens = R.lensProp('distance');
+// const newDistance = R.pipe(
+//     R.pick(['order']),
+//     R.prop('order'),
+//     calcDistanceWithOrder(wareHouses)
+// )
+
+
+
