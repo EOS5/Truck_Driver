@@ -32,13 +32,12 @@ const fleet = createFleet(numberOfTruck);
 const wareHouses = createWarehouse(numberOfPoints);
 
 const generateListOfOrder = R.times(R.identity,numberOfPoints);
+
 const orderOfPoints = () => {
     return shuffle(generateListOfOrder);
 }
 
-const calculateDistance = () => {
-    return calcDistanceWithOrder(wareHouses,orderOfPoints())
-}
+const calculateDistance = () => calcDistanceWithOrder(wareHouses, orderOfPoints())
 
 const generatePopulation = R.applySpec({
     order: orderOfPoints,
