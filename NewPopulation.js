@@ -1,7 +1,6 @@
 import * as R from 'ramda';
-import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
+import {calcDistanceWithOrder} from "./BasicCalculs.js";
 import {populationShuffled, wareHouses} from "./Population.js";
-import {swap} from "./Shuffle.js";
 
 //TODO: This code is trash and useless redo it
 //TODO: Maybe make a dictionnary with fitness and the points order because the results are hard to read
@@ -24,22 +23,22 @@ const normalizedFitness = R.map(normalization,fitness);
 //
 // console.log(bestPath);
 // -----------------------------
-//TODO: To Ramda
-const pickOne = R.curry((list,prob) => {
-    var index = 0;
-    var r = Math.random();
-    while (r > 0){
-        r = r - prob[index];
-        index ++;
-    }
-    index --;
-    return list[index];
-})
-// -----------------------------
 
-const populationPick = pickOne(populationShuffled,normalizedFitness);
-const listPopulation = R.times(R.identity(populationPick),10);
-const mutatePopulation = R.map(swap(randomFunc(),randomFunc()),listPopulation);
-const populationMutated = mutatePopulation;
-
-export {listPopulation,populationMutated};
+// const pickOne = R.curry((list,prob) => {
+//     let index = 0;
+//     let r = Math.random();
+//     while (r > 0){
+//         r = r - prob[index];
+//         index ++;
+//     }
+//     index --;
+//     return list[index];
+// })
+// // -----------------------------
+// const populationPick = pickOne(populationShuffled,normalizedFitness);
+// const listPopulation = R.times(R.identity(populationPick),10);
+// const mutatePopulation = R.map(swap(randomFunc(),randomFunc()),listPopulation);
+// const populationMutated = mutatePopulation;
+//
+// export {listPopulation,populationMutated};
+export {normalizedFitness}

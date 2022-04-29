@@ -2,10 +2,10 @@ import * as R from 'ramda'
 
 //ToDo: Modify this function to be Ramda
 const shuffler = R.curry(function(random, list) {
-        var idx = -1;
-        var len = list.length;
-        var position;
-        var result = [];
+        let idx = -1;
+        let len = list.length;
+        let position;
+        let result = [];
         while (++idx < len) {
             position = Math.floor((idx + 1) * random());
             result[idx] = result[position];

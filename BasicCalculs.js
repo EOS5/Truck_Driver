@@ -33,13 +33,13 @@ const normVector = R.curry((obj1,obj2) => {
 
 //ToDo: Modify this function to be Ramda ?
 const calcDistanceWithOrder = R.curry((points, order) => {
-    var sum = 0;
-    for (var i = 0;i<order.length - 1; i++){
-        var pointAIndex = order[i];
-        var pointA = points[pointAIndex];
-        var pointBIndex = order[i+1];
-        var pointB = points[pointBIndex];
-        var d = normVector(pointA,pointB);
+    let sum = 0;
+    for (let i = 0;i<order.length - 1; i++){
+        let pointAIndex = order[i];
+        let pointA = points[pointAIndex];
+        let pointBIndex = order[i+1];
+        let pointB = points[pointBIndex];
+        let d = normVector(pointA,pointB);
         sum += d;
     }
     return sum
