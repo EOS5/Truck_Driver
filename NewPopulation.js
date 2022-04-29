@@ -27,5 +27,6 @@ const createNewOrder = R.map(newOrder,newPopulation)
 const createNextGeneration = R.map(newDistance,createNewOrder)
 const NextGeneration = R.sort(byDistance,createNextGeneration)
 console.log(NextGeneration)
+console.log('wesh')
 
 
