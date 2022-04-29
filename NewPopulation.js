@@ -3,9 +3,12 @@ import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 import {populationShuffled, wareHouses} from "./Population.js";
 import {swap} from "./Shuffle.js";
 
+//TODO: This code is trash and useless redo it
+//TODO: Maybe make a dictionnary with fitness and the points order because the results are hard to read
+
 const distanceByPath = R.map(calcDistanceWithOrder(wareHouses),populationShuffled);
-const square = n => n * n;
-const bestDistance = R.reduce(R.minBy(square),Infinity,distanceByPath);
+// const square = n => n * n;
+// const bestDistance = R.reduce(R.minBy(square),Infinity,distanceByPath);
 const calculFitness = (x) => R.divide(1,x+1);
 
 
@@ -16,13 +19,12 @@ const sumElemList = R.sum;
 const normalization = R.divide(R.__,sumElemList(fitness));
 const normalizedFitness = R.map(normalization,fitness);
 
-const indexOfBestPath = R.indexOf(bestDistance,distanceByPath);
-const bestPath = populationShuffled[indexOfBestPath];
-
-// console.log(fitness);
-// console.log(normalizedFitness);
-console.log(bestPath);
-
+// const indexOfBestPath = R.indexOf(bestDistance,distanceByPath);
+// const bestPath = populationShuffled[indexOfBestPath];
+//
+// console.log(bestPath);
+// -----------------------------
+//TODO: To Ramda
 const pickOne = R.curry((list,prob) => {
     var index = 0;
     var r = Math.random();
@@ -33,7 +35,11 @@ const pickOne = R.curry((list,prob) => {
     index --;
     return list[index];
 })
-const pop = pickOne(populationShuffled,normalizedFitness);
-const mutatePopulation = swap(randomFunc(),randomFunc(),pop);
-console.log(mutatePopulation);
-export {normalizedFitness}
+// -----------------------------
+
+const populationPick = pickOne(populationShuffled,normalizedFitness);
+const listPopulation = R.times(R.identity(populationPick),10);
+const mutatePopulation = R.map(swap(randomFunc(),randomFunc()),listPopulation);
+const populationMutated = mutatePopulation;
+
+export {listPopulation,populationMutated};

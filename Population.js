@@ -4,7 +4,9 @@ import {shuffle} from "./Shuffle.js";
 
 const numberOfPoints = 10;
 const numberOfTruck = 1;
-// const bestPop = [];
+const popSize = 100;
+
+
 const generatePoint = R.applySpec({
     name: 'Point1',
     pos: {
@@ -30,7 +32,7 @@ const fleet = createFleet(numberOfTruck);
 const wareHouses = createWarehouse(numberOfPoints);
 
 const creatOrderOfPoints = R.times(R.identity,numberOfPoints);
-const population  = R.repeat(creatOrderOfPoints,numberOfPoints);
+const population  = R.repeat(creatOrderOfPoints,popSize);
 
 const populationShuffled = R.map(shuffle,population);
 
