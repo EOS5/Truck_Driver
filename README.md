@@ -14,7 +14,7 @@ Traveling sales man with constraints ? at least i will try…
 
 -Find best path
 
--Calculate fitness and normalize
+-Mutation (Wip)
 
 
 
