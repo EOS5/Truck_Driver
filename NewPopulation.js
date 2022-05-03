@@ -5,7 +5,8 @@ import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 
 
 const newPopulation = R.take(30,populationSorted);
-console.log(newPopulation)
+
+// console.log(newPopulation)
 // const popOrder = R.prop('order');
 
 const mutateOrder = R.pipe(
@@ -25,7 +26,5 @@ const newDistance = R.applySpec({
 })
 const createNewOrder = R.map(newOrder,newPopulation)
 const createNextGeneration = R.map(newDistance,createNewOrder)
-const NextGeneration = R.sort(byDistance,createNextGeneration)
-console.log(NextGeneration)
-
-console.log('kkkkkk')
+const nextGeneration = R.sort(byDistance,createNextGeneration)
+console.log(nextGeneration)

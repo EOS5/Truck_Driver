@@ -2,7 +2,7 @@ import * as R from 'ramda'
 import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 import {shuffle} from "./Shuffle.js";
 
-const numberOfPoints = 10;
+const numberOfPoints = 5;
 const numberOfTruck = 1;
 const popSize = 100;
 
@@ -39,6 +39,7 @@ const orderOfPoints = () => {
 
 const calculateDistance = () => calcDistanceWithOrder(wareHouses, orderOfPoints())
 
+//TODO:Make distance dependent of the order. See newPopulation.
 const generatePopulation = R.applySpec({
     order: orderOfPoints,
     distance: calculateDistance
