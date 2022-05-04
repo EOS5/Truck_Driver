@@ -26,4 +26,4 @@ const swap = R.curry((index1, index2, list) => {
         R.set(R.lensIndex(index2), value1)
     )(list)
 })
-export {shuffle,swap}
+export {shuffle,swap,shuffler}
