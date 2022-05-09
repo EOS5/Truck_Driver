@@ -39,7 +39,6 @@ const orderOfPoints = () => {
 
 const calculateDistance = () => calcDistanceWithOrder(wareHouses, orderOfPoints())
 
-//TODO:Make distance dependent of the order. See newPopulation.
 const generatePopulation = R.applySpec({
     order: orderOfPoints,
     distance: calculateDistance
@@ -48,5 +47,5 @@ const createPopulation = R.times(generatePopulation);
 const population = createPopulation(popSize);
 const byDistance = R.ascend(R.prop('distance'));
 const populationSorted = R.sort(byDistance,population);
-
+console.log(wareHouses);
 export {wareHouses,fleet,populationSorted,byDistance,numberOfPoints}

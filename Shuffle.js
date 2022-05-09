@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 
-//ToDo: Modify this function to be Ramda
+//ToDo: Modify this function to be Ramda ?
 const shuffler = R.curry(function(random, list) {
         let idx = -1;
         let len = list.length;
