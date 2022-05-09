@@ -8,13 +8,13 @@ const mutateOrder = R.pipe(
     R.prop('order'),
     swap(random(0,4,false),random(0,4,false)),
 )
+const newOrder = R.applySpec({
+    order: mutateOrder,
+});
 const mutateDistance = R.pipe(
     R.prop('order'),
     calcDistanceWithOrder(wareHouses)
 );
-const newOrder = R.applySpec({
-    order: mutateOrder,
-});
 const newDistance = R.applySpec({
     order: R.prop('order'),
     distance: mutateDistance,

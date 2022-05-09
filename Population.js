@@ -47,5 +47,5 @@ const createPopulation = R.times(generatePopulation);
 const population = createPopulation(popSize);
 const byDistance = R.ascend(R.prop('distance'));
 const populationSorted = R.sort(byDistance,population);
-console.log(wareHouses);
+// console.log(wareHouses);
 export {wareHouses,fleet,populationSorted,byDistance,numberOfPoints}
