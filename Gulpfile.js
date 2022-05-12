@@ -1,17 +1,26 @@
+import { spawn } from "node:child_process";
 import gulp from "gulp";
-const { series } = gulp;
 
-function transpile(cb) {
-    // body omitted
-    cb();
-}
+const { watch, series } = gulp;
 
-function bundle(cb) {
-    // body omitted
-    cb();
-}
+let myProcess = null;
 
-const build = series(transpile, bundle);
+const watcher = async () => {
+    watch(["./*.js"], series(stop, start));
+};
 
+const start = async () => {
+    myProcess = spawn("node", ["NewPopulation.js"], { stdio: "inherit" });
+};
 
-export {build}
+const stop = async () => {
+    if (myProcess) {
+        await myProcess.kill();
+        myProcess = null;
+    }
+};
+
+const defaultRun = series(start, watcher);
+
+// export default defaultRun;
+export { watcher, defaultRun };

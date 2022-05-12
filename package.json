@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/EOS5/Truck_Driver#readme",
   "devDependencies": {
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "xo": "^0.48.0"
   }
 }
