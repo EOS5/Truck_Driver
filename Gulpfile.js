@@ -16,7 +16,7 @@ const start = async () => {
 const stop = async () => {
     if (myProcess) {
         await myProcess.kill();
-        myProcess = null;
+        myProcess = false;
     }
 };
 

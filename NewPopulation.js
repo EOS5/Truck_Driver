@@ -20,4 +20,6 @@ const nextGeneration = R.sort(byDistance,createNextGeneration);
 // }
 // loop(nextGeneration);
 
+console.log("Best Path: ", nextGeneration[0])
+
 export {createNewOrder,createNextGeneration,nextGeneration}
