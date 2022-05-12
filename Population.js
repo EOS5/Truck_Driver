@@ -32,17 +32,21 @@ const fleet = createFleet(numberOfTruck);
 const wareHouses = createWarehouse(numberOfPoints);
 
 const generateListOfOrder = R.times(R.identity,numberOfPoints);
-
+//TODO: Population est totalement cassé à refaire.
 const orderOfPoints = () => {
     return shuffle(generateListOfOrder);
 }
 
-const calculateDistance = () => calcDistanceWithOrder(wareHouses, orderOfPoints())
+// const calculateDistance = () => calcDistanceWithOrder(wareHouses, orderOfPoints())
 
-const generatePopulation = R.applySpec({
+const generatePopulation2 = R.applySpec({
     order: orderOfPoints,
-    distance: calculateDistance
 })
+const generatePopulation = R.applySpec({
+    order: R.prop("order",generatePopulation2),
+    distance: calcDistanceWithOrder(wareHouses,generatePopulation2)
+})
+
 const createPopulation = R.times(generatePopulation);
 const population = createPopulation(popSize);
 const byDistance = R.ascend(R.prop('distance'));
