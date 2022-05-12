@@ -3,10 +3,11 @@ import {swap} from "./Shuffle.js";
 import {calcDistanceWithOrder, random} from "./BasicCalculs.js";
 import {numberOfPoints, wareHouses} from "./Population.js";
 
+const randomNumber = random(0,numberOfPoints-1,false);
 
 const mutateOrder = R.pipe(
     R.prop('order'),
-    swap(random(0,numberOfPoints-1,false),random(0,numberOfPoints-1,false)),
+    swap(randomNumber,randomNumber),
 )
 const newOrder = R.applySpec({
     order: mutateOrder,
@@ -20,4 +21,4 @@ const newDistance = R.applySpec({
     distance: mutateDistance,
 });
 
-export {mutateOrder,mutateDistance,newOrder,newDistance}
+export {mutateOrder,mutateDistance,newOrder,newDistance,randomNumber}
