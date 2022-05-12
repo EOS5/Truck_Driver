@@ -4,11 +4,15 @@
   "description": "## Libraries Ramda",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/*/*.js",
-    "start": "node NewPopulation.js"
+    "test": "xo && mocha test/*/*.js",
+    "start": "node new-population.js",
+    "code-style": "xo"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "TSP",
+    "TravelingSalesPerson"
+  ],
+  "author": "EOS5, Vic",
   "type": "module",
   "license": "ISC",
   "dependencies": {
@@ -27,5 +31,12 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "xo": "^0.48.0"
+  },
+  "xo": {
+    "rules": {
+      "unicorn/no-array-callback-reference": 0,
+      "no-undef": 0
+    }
+
   }
 }
