@@ -4,7 +4,7 @@ import {newDistance, newOrder} from "./GenMutation.js";
 
 
 const newPopulation = R.take(30,populationSorted);
-console.log(newPopulation) //Population initiale
+// console.log(newPopulation) //Population initiale
 
 const createNewOrder = R.map(newOrder,newPopulation);
 const createNextGeneration = R.map(newDistance,createNewOrder);
