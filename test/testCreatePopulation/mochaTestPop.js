@@ -6,8 +6,6 @@ describe("test Creation Population", () => {
         it('should return an array', () => {
             expect(wareHouses).to.be.an('array');
         });
-    });
-    describe("Test Creation Points",() => {
         it('should return an Object', () => {
             expect(wareHouses[0]).to.be.an('Object');
         });

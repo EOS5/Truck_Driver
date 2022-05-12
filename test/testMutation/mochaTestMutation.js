@@ -12,10 +12,13 @@ describe('Mutation', () => {
         it('should return an array', () =>{
             expect(mutateOrder(populationSorted[0])).to.be.an('array');
         });
-    });
-    describe('TestGenMutate', () => {
         it('should return a number', () =>{
             expect(mutateDistance(testPop[0])).to.be.an('number');
         });
     });
-})
+    // describe('Test calcul mutated distance', () =>{
+    //     it('should return the mutated distance', function () {
+    //
+    //     });
+    // });
+});
