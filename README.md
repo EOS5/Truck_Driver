@@ -6,11 +6,16 @@ Ramda
 ## What i do ?
 Traveling sales man with constraints ? at least i will try…
 
--Create List of point
+-Create Fleet of Trucks
 
--Create list of index of position (listOrder)
+-Create field of points
 
--Mutation of listOrder 
+-Calculate Vector
+
+-Find best path
+
+-Mutation (Wip)
+
 
 
 ## Sources of inspiration
