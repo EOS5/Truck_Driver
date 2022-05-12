@@ -1,12 +1,12 @@
 import * as R from "ramda";
 import {swap} from "./Shuffle.js";
 import {calcDistanceWithOrder, random} from "./BasicCalculs.js";
-import {wareHouses} from "./Population.js";
+import {numberOfPoints, wareHouses} from "./Population.js";
 
 
 const mutateOrder = R.pipe(
     R.prop('order'),
-    swap(random(0,4,false),random(0,4,false)),
+    swap(random(0,numberOfPoints-1,false),random(0,numberOfPoints-1,false)),
 )
 const newOrder = R.applySpec({
     order: mutateOrder,

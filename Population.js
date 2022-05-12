@@ -19,20 +19,20 @@ const createWarehouse = R.times(generatePoint);
 const wareHouses = createWarehouse(numberOfPoints);
 
 const generateListOfOrder = R.times(R.identity,numberOfPoints);
-const jsp = R.repeat(generateListOfOrder,popSize);
+const populationGenerator = R.repeat(generateListOfOrder,popSize);
 
-const ordPoints = R.map(shuffle,jsp);
-const bish = R.applySpec({
+const ordPoints = R.map(shuffle,populationGenerator);
+const shuffling = R.applySpec({
     order: shuffle,
 })
-const orderOfPoints = R.map(bish,ordPoints);
-const pd = R.pipe(
+const orderOfPoints = R.map(shuffling,ordPoints);
+const calDist = R.pipe(
     R.prop('order'),
     calcDistanceWithOrder(wareHouses)
 )
 const generatePopulation = R.applySpec({
     order: R.prop('order'),
-    distance: pd
+    distance: calDist
 });
 
 const population = R.map(generatePopulation,orderOfPoints);
