@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 
-//ToDo: Modify this function to be Ramda
+//ToDo: Modify this function to be Ramda ?
 const shuffler = R.curry(function(random, list) {
         let idx = -1;
         let len = list.length;
@@ -26,4 +26,4 @@ const swap = R.curry((index1, index2, list) => {
         R.set(R.lensIndex(index2), value1)
     )(list)
 })
-export {shuffle,swap}
+export {shuffle,swap,shuffler}
