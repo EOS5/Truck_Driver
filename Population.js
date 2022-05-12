@@ -3,7 +3,6 @@ import {calcDistanceWithOrder, randomFunc} from "./BasicCalculs.js";
 import {shuffle} from "./Shuffle.js";
 
 const numberOfPoints = 5;
-const numberOfTruck = 1;
 const popSize = 100;
 
 
@@ -15,20 +14,8 @@ const generatePoint = R.applySpec({
     }
 });
 
-const generateTruck = R.applySpec({
-    name: "Truck1",
-    trunk: R.always(Infinity),
-    fuelTank: R.always(Infinity),
-    pos: {
-        x: randomFunc,
-        y: randomFunc
-    }
-});
-
 const createWarehouse = R.times(generatePoint);
-const createFleet = R.times(generateTruck);
 
-const fleet = createFleet(numberOfTruck);
 const wareHouses = createWarehouse(numberOfPoints);
 
 const generateListOfOrder = R.times(R.identity,numberOfPoints);
@@ -52,6 +39,5 @@ const population = R.map(generatePopulation,orderOfPoints);
 
 const byDistance = R.ascend(R.prop('distance'));
 const populationSorted = R.sort(byDistance,population);
-// console.log(populationSorted);
-// console.log(wareHouses);
-export {wareHouses,fleet,populationSorted,byDistance,numberOfPoints,generateListOfOrder,orderOfPoints,population}
+
+export {wareHouses,populationSorted,byDistance,numberOfPoints,generateListOfOrder,orderOfPoints,population}
