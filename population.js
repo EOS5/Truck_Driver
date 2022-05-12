@@ -6,7 +6,7 @@ const numberOfPoints = 5;
 const popSize = 100;
 
 const generatePoint = R.applySpec({
-	name: 'Point 1',
+	name: R.always('Point'),
 	pos: {
 		x: randomFunc,
 		y: randomFunc,
