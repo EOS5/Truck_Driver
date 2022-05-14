@@ -25,8 +25,8 @@ const shuffling = R.applySpec({
 });
 const orderOfPoints = R.map(shuffling, ordPoints);
 // =======================WIP================
-const calcDist = computeDistanceWithOrder(wareHouses, 5);
-console.log(calcDist.totalDistance);
+const calcDist = computeDistanceWithOrder(wareHouses);
+console.log(calcDist(25));
 
 const generatePopulation = R.applySpec({
 	order: R.prop('order'),
