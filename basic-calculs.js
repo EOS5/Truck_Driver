@@ -33,7 +33,7 @@ const computeDistanceWithOrder = R.curry(
 
 		(acc, value) => R.applySpec({
 			totalDistance: computeDistance(value),
-			totalScore: R.pipe(R.prop('totalScore'), R.add(acc.totalScore)),
+			totalScore: R.pipe(R.prop('totalScore'), R.add(acc.totalDistance)),
 			currentPosition: value.pos,
 		})(acc),
 		{totalDistance: 0, totalScore: 0, currentPosition: travel[0]},
