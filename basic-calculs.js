@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import {wareHouses} from "./population.js";
 
 const random = R.curry((min, max, isFloat) => {
 	const range = max - min;
@@ -24,22 +25,34 @@ const subtractOnY = (object1, object2) => R.subtract(getCordAxisY([object1]), ge
 const sqrt = x => Math.sqrt(x);
 const normVector = R.curry((object1, object2) => sqrt(R.add(pow(subtractOnX(object1, object2)), pow(subtractOnY(object1, object2)))));
 
-const computeDistance = value => acc => acc.totalDistance + normVector(value, acc.currentPosition);
+const computeDistance = value => acc => acc.totalDistance + normVector(wareHouses[value], wareHouses[acc.currentPosition]);
 
 const computeDistanceWithOrder = R.curry(
-	(travel, constraint) => R.reduceWhile(
-
-		acc => acc.totalDistance < constraint,
-
+	(constraint,travel) => R.reduceWhile(
+		acc => acc.totalScore < constraint,
 		(acc, value) => R.applySpec({
 			totalDistance: computeDistance(value),
-			totalScore: R.pipe(R.prop('totalScore'), R.add(acc.totalDistance)),
-			currentPosition: value.pos,
+			totalScore: R.pipe(R.prop('totalScore'), R.add(value)),
+			currentPosition: value,
 		})(acc),
+
 		{totalDistance: 0, totalScore: 0, currentPosition: travel[0]},
-		travel,
+		travel.order,
 	),
 );
 
-export {randomFunc, normVector, computeDistanceWithOrder, random};
+const kaka = R.curry((points, order) => {
+	let sum = 0;
+	for (let i = 0; i < order.length - 1; i++) {
+		const pointAIndex = order[i];
+		const pointA = points[pointAIndex];
+		const pointBIndex = order[i + 1];
+		const pointB = points[pointBIndex];
+		const d = normVector(pointA, pointB);
+		sum += d;
+	}
+	return sum;
+});
+
+export {randomFunc, normVector, computeDistanceWithOrder, random, kaka};
 
